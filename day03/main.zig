@@ -63,6 +63,9 @@ fn addEnabledMultiplications(data: []const u8) !u32 {
 }
 
 pub fn main() !void {
+    var timer = try std.time.Timer.start();
+    defer std.debug.print("Task took {} ms to complete.", .{timer.read() / std.time.ns_per_ms});
+
     var gpa: std.heap.GeneralPurposeAllocator(.{}) = .init;
     defer _ = gpa.deinit();
     const alloc = gpa.allocator();

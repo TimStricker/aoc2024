@@ -103,6 +103,9 @@ fn countSafeReports(reports: *const Reports, comptime with_dampening: bool) usiz
 }
 
 pub fn main() !void {
+    var timer = try std.time.Timer.start();
+    defer std.debug.print("Task took {} ms to complete.", .{timer.read() / std.time.ns_per_ms});
+
     var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer arena.deinit();
     const reports = try parseInput(arena.allocator(), "inputs.txt");
