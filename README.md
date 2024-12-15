@@ -4,6 +4,13 @@ My attempt to solve AoC 2024 in [Zig](https://github.com/ziglang/zig/). I am not
 yet super familiar with the language, so don't expect the most beautiful,
 idiomatic Zig code. This is really just me trying to learn.
 
+## Supported Zig version
+
+I'm using the nightly version of Zig to solve these tasks. At the time of
+writing, this is `0.14.0-dev.2465+70de2f3a7`. Note that Zig is still in active
+development and new versions might have braking changes, so it is not guaranteed
+that the code works with any other version.
+
 ## How to run
 
 You can find the solution for each day in the `dayXY` directories. They are all
