@@ -5,8 +5,6 @@ const Position = struct { x: usize, y: usize };
 const GuardState = struct { position: Position, direction: u8 };
 const StepResult = enum { TOOK_STEP, LEFT_MAP };
 
-const VisitsPerPosition = std.AutoHashMap(Position, u3);
-
 fn parseInput(allocator: std.mem.Allocator, comptime filename: []const u8) !LabMap {
     var map = LabMap.init(allocator);
     errdefer map.deinit();
@@ -146,16 +144,6 @@ fn createLoops(allocator: std.mem.Allocator, original_map: LabMap) !u32 {
             if (try hasLoop(allocator, &new_map)) count += 1;
         }
     } else count;
-}
-
-fn printMap(map: LabMap) void {
-    for (map.items) |row| {
-        for (row.items) |element| {
-            std.debug.print("{c} ", .{element});
-        }
-        std.debug.print("\n", .{});
-    }
-    std.debug.print("\n", .{});
 }
 
 pub fn main() !void {
